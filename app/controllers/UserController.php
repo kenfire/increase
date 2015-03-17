@@ -225,4 +225,8 @@ class UserController extends ControllerBase
         ));
     }
 
+    public function projectsAction($id){
+
+    }
+
 }
