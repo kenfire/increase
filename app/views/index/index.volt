@@ -9,3 +9,5 @@
 <a class="btn btn-info">Info</a>&nbsp;
 <a class="btn btn-warning">Warning</a>&nbsp;
 <a class="btn btn-danger">Danger</a>
+<br/>
+{{ link_to("user/projects/1", "User1") }}
