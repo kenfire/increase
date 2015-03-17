@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Increase</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		{{ get_title() }}
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">		
 		{{ stylesheet_link("css/bootstrap.min.css") }}
 		{{ stylesheet_link("css/styles.css") }}
 		{{ javascript_include('js/jquery.min.js') }}
