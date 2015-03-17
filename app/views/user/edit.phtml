@@ -1,0 +1,57 @@
+
+<?php echo $this->getContent(); ?>
+
+<?php echo $this->tag->form("user/save") ?>
+
+<table width="100%">
+    <tr>
+        <td align="left"><?php echo $this->tag->linkTo(array("user", "Back")) ?></td>
+        <td align="right"><?php echo $this->tag->submitButton("Save") ?></td>
+    </tr>
+</table>
+
+<div align="center">
+    <h1>Edit user</h1>
+</div>
+
+<table>
+    <tr>
+        <td align="right">
+            <label for="mail">Mail</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("mail", "size" => 30)) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="password">Password</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("password", "size" => 30)) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="identite">Identite</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("identite", "size" => 30)) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="role">Role</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("role", "size" => 30)) ?>
+        </td>
+    </tr>
+
+    <tr>
+        <td><?php echo $this->tag->hiddenField("id") ?></td>
+        <td><?php echo $this->tag->submitButton("Save") ?></td>
+    </tr>
+</table>
+
+</form>
