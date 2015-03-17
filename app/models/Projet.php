@@ -43,19 +43,27 @@ class Projet extends \Phalcon\Mvc\Model
 	 *@var string
 	 */
 	public $reste;
-	
-	
+
+    /**
+     *
+     *@var integer
+     */
+	public $avancement;
 	
 	public function initialize(){
 		$this->belongsTo("idClient","User","id");
 	}
 
 	public function afterFetch(){
+        // Calcule date restante
 		$datetime1 = new DateTime(date("d-m-Y"));
 		$datetime2 = new DateTime($this->dateFinPrevue);
 		$interval = $datetime1->diff($datetime2);
 
 		$this->reste = $interval->format('%R%a days');
+
+        // Calcule % avancement du projet
+        $this->avancement = 60 ;
 	}
 
 }
