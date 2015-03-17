@@ -49,8 +49,6 @@ INSERT INTO `message` (`id`, `objet`, `content`, `date`, `idUser`, `idProjet`, `
 (2, 'Essai', 'Aucun contenu', '2015-03-12 23:00:00', 1, 1, NULL),
 (7, 'Ok', 'Rien à répondre', '2015-03-13 13:33:51', 2, 1, 2);
 
-
-
 --
 -- Contenu de la table `usecase`
 --
@@ -84,8 +82,6 @@ INSERT INTO `tache` (`id`, `libelle`, `date`, `avancement`, `codeUseCase`) VALUE
 (5, 'Connexion REST', '2015-03-13', 50, 'OB-UC1'),
 (6, 'Liste des bières', '2015-03-22', 100, 'OB-UC2'),
 (7, 'Liste des bières par brasserie', '2015-03-22', 10, 'OB-UC2');
-
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
