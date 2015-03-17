@@ -39,4 +39,14 @@ class Projet extends \Phalcon\Mvc\Model
      */
     public $idClient;
 
+    public $reste;
+
+    public function afterFetch(){
+        $datetime1 = new DateTime(date("d-m-Y"));
+        $datetime2 = new DateTime($this->dateFinPrevue);
+        $interval = $datetime1->diff($datetime2);
+
+        $this->reste = $interval->format('%R%a days');;
+    }
+
 }
