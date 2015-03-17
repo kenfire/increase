@@ -2,42 +2,47 @@
 
 class Projet extends \Phalcon\Mvc\Model
 {
-
-    /**
+	/**
      *
      * @var integer
      */
-    public $id;
+	public $id;
 
-    /**
+	/**
      *
      * @var string
      */
-    public $nom;
+	public $nom;
 
-    /**
+	/**
      *
      * @var string
      */
-    public $description;
+	public $description;
 
-    /**
+	/**
      *
      * @var string
      */
-    public $dateLancement;
+	public $dateLancement;
 
-    /**
+	/**
      *
      * @var string
      */
-    public $dateFinPrevue;
+	public $dateFinPrevue;
 
-    /**
+	/**
      *
      * @var integer
      */
     public $idClient;
+	
+	/**
+	 *
+	 *@var string
+	 */
+	public $reste;
 
     public function initialize(){
         $this->belongsTo("idClient","User","id");
@@ -60,5 +65,13 @@ class Projet extends \Phalcon\Mvc\Model
     public function getdateFinPrevue(){
         return $this->dateFinPrevue;
     }
+
+	public function afterFetch(){
+		$datetime1 = new DateTime(date("d-m-Y"));
+		$datetime2 = new DateTime($this->dateFinPrevue);
+		$interval = $datetime1->diff($datetime2);
+
+		$this->reste = $interval->format('%R%a days');
+	}
 
 }

@@ -226,6 +226,13 @@ class UserController extends ControllerBase
     }
 
     public function projectsAction($id){
+        $user = User::findFirstByid($id);
+        $this->view->user = $user; // variable accessible dans la vue
+
+        $projects = Projet::find(array(
+            "idClient = $id"
+        ));
+        $this->view->projects = $projects;
 
     }
 
