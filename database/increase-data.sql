@@ -22,40 +22,13 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `increase` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `increase`;
 
---
--- Vider la table avant d'insérer `message`
---
-
-TRUNCATE TABLE `message`;
---
--- Contenu de la table `message`
---
-
 INSERT INTO `message` (`id`, `objet`, `content`, `date`, `idUser`, `idProjet`, `idFil`) VALUES
 (2, 'Essai', 'Aucun contenu', '2015-03-12 23:00:00', 1, 1, NULL),
 (7, 'Ok', 'Rien à répondre', '2015-03-13 13:33:51', 2, 1, 2);
 
---
--- Vider la table avant d'insérer `projet`
---
-
-TRUNCATE TABLE `projet`;
---
--- Contenu de la table `projet`
---
-
 INSERT INTO `projet` (`id`, `nom`, `description`, `dateLancement`, `dateFinPrevue`, `idClient`) VALUES
 (1, 'Increase', 'A Phalcon web application to manage the progress of projects, and improve communication with the customer', '2015-03-16', '2015-03-29', 1),
 (2, 'Open-beer', 'A free, public database, API and web application for beer information.', '2015-03-15', '2015-03-29', 1);
-
---
--- Vider la table avant d'insérer `tache`
---
-
-TRUNCATE TABLE `tache`;
---
--- Contenu de la table `tache`
---
 
 INSERT INTO `tache` (`id`, `libelle`, `date`, `avancement`, `codeUseCase`) VALUES
 (1, 'Interview client +rédaction', '2015-03-22', 100, 'I-UC1'),
@@ -65,15 +38,6 @@ INSERT INTO `tache` (`id`, `libelle`, `date`, `avancement`, `codeUseCase`) VALUE
 (5, 'Connexion REST', '2015-03-13', 50, 'OB-UC1'),
 (6, 'Liste des bières', '2015-03-22', 100, 'OB-UC2'),
 (7, 'Liste des bières par brasserie', '2015-03-22', 10, 'OB-UC2');
-
---
--- Vider la table avant d'insérer `usecase`
---
-
-TRUNCATE TABLE `usecase`;
---
--- Contenu de la table `usecase`
---
 
 INSERT INTO `usecase` (`code`, `nom`, `poids`, `avancement`, `idProjet`, `idDev`) VALUES
 ('I-UC-Dev1', 'Connexion utilisateur', 5, 0, 1, 4),
@@ -91,15 +55,6 @@ INSERT INTO `usecase` (`code`, `nom`, `poids`, `avancement`, `idProjet`, `idDev`
 ('I-UC4', 'Analyse fonctionnelle', 20, 100, 1, 4),
 ('OB-UC1', 'Connexion au server REST', 10, 0, 2, 5),
 ('OB-UC2', 'Gestion des bières (liste/ajout/modification)', 10, 0, 2, 5);
-
---
--- Vider la table avant d'insérer `user`
---
-
-TRUNCATE TABLE `user`;
---
--- Contenu de la table `user`
---
 
 INSERT INTO `user` (`id`, `mail`, `password`, `identite`, `role`) VALUES
 (1, 'johndoe@kobject.net', 'ffffff9afffffff15b336e6affffff9619ffffff92ffffff8537ffffffdf30ffffffb2ffffffe6ffffffa2376569fffffffcfffffff9ffffffd7ffffffe773ffffffecffffffceffffffde65606529ffffffa0', 'John DOE', 'user'),
