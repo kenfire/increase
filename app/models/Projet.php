@@ -39,4 +39,8 @@ class Projet extends \Phalcon\Mvc\Model
      */
     public $idClient;
 
+    public function initialize(){
+        $this->belongsTo("idClient","User","id");
+    }
+
 }
