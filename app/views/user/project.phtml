@@ -1,0 +1,28 @@
+﻿<div class="alert alert-info"><?php echo $nom." [".$user."]" ?></div>
+<hr>
+<div class="panel panel-info">
+    <div class="panel-heading">Détails du projet</div>
+    <div class="panel-body">
+<?php
+    echo "<b>Description: </b><p>".$description."</p>";
+    echo "<b>Date de Lancement: </b>".$dateLancement." ";
+    echo " <b>Date de Fin prévue: </b>".$dateFinPrevue;
+?>
+    </div>
+</div>
+<hr>
+<div class="panel panel-info">
+    <div class="panel-heading">Equipe</div>
+    <div class="panel-body">
+        <table class="table table-condensed">
+
+        <?php
+        for($i = 0; $i<sizeof($tab_dev); $i++){
+            echo "<tr><td>".$tab_dev[$i]."</td>";
+            echo "<td>[".$tab_poids[$i]."]</td></tr>";
+        }
+        ?>
+
+        </table>
+    </div>
+</div>

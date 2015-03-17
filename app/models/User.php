@@ -37,4 +37,7 @@ class User extends \Phalcon\Mvc\Model
         $this->hasMany("id","Projet","idClient",array("alias"=>"projets"));
     }
 
+    public function getNom(){
+        return $this->identite;
+    }
 }

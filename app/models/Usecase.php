@@ -39,4 +39,15 @@ class Usecase extends \Phalcon\Mvc\Model
      */
     public $idDev;
 
+    public function initialize(){
+        $this->belongsTo("idDev","User","id");
+    }
+
+    public function getidDev(){
+        return $this->idDev;
+    }
+
+    public function getPoids(){
+        return $this->poids;
+    }
 }
