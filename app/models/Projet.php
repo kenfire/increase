@@ -36,8 +36,8 @@ class Projet extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-	public $idClient;
-
+    public $idClient;
+	
 	/**
 	 *
 	 *@var string
@@ -50,9 +50,27 @@ class Projet extends \Phalcon\Mvc\Model
      */
 	public $avancement;
 	
-	public function initialize(){
-		$this->belongsTo("idClient","User","id");
-	}
+    public function initialize(){
+        $this->belongsTo("idClient","User","id");
+        $this->hasMany("id", "Usecase", "idProjet",array("alias"=>"usecases"));
+        $this->hasManyToMany("id", "Usecase", "idProjet", "idDev", "User", "id",array("alias"=>"users"));
+    }
+
+    public function getNom(){
+        return $this->nom;
+    }
+
+    public function getDescription(){
+        return $this->description;
+    }
+
+    public function getdateLancement(){
+        return $this->dateLancement;
+    }
+
+    public function getdateFinPrevue(){
+        return $this->dateFinPrevue;
+    }
 
 	public function afterFetch(){
         // Calcule date restante
