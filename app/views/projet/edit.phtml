@@ -1,0 +1,65 @@
+
+<?php echo $this->getContent(); ?>
+
+<?php echo $this->tag->form("projet/save") ?>
+
+<table width="100%">
+    <tr>
+        <td align="left"><?php echo $this->tag->linkTo(array("projet", "Back")) ?></td>
+        <td align="right"><?php echo $this->tag->submitButton("Save") ?></td>
+    </tr>
+</table>
+
+<div align="center">
+    <h1>Edit projet</h1>
+</div>
+
+<table>
+    <tr>
+        <td align="right">
+            <label for="nom">Nom</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("nom", "size" => 30)) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="description">Description</label>
+        </td>
+        <td align="left">
+                <?php echo $this->tag->textField(array("description", "type" => "date")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="dateLancement">DateLancement</label>
+        </td>
+        <td align="left">
+                <?php echo $this->tag->textField(array("dateLancement", "type" => "date")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="dateFinPrevue">DateFinPrevue</label>
+        </td>
+        <td align="left">
+                <?php echo $this->tag->textField(array("dateFinPrevue", "type" => "date")) ?>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="idClient">IdClient</label>
+        </td>
+        <td align="left">
+            <?php echo $this->tag->textField(array("idClient", "type" => "number")) ?>
+        </td>
+    </tr>
+
+    <tr>
+        <td><?php echo $this->tag->hiddenField("id") ?></td>
+        <td><?php echo $this->tag->submitButton("Save") ?></td>
+    </tr>
+</table>
+
+</form>

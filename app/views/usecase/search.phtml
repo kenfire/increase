@@ -1,0 +1,56 @@
+<?php use Phalcon\Tag; ?>
+
+<?php echo $this->getContent(); ?>
+
+<table width="100%">
+    <tr>
+        <td align="left">
+            <?php echo $this->tag->linkTo(array("usecase/index", "Go Back")); ?>
+        </td>
+        <td align="right">
+            <?php echo $this->tag->linkTo(array("usecase/new", "Create ")); ?>
+        </td>
+    </tr>
+</table>
+
+<table class="browse" align="center">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Nom</th>
+            <th>Poids</th>
+            <th>Avancement</th>
+            <th>IdProjet</th>
+            <th>IdDev</th>
+         </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($page->items as $usecase) { ?>
+        <tr>
+            <td><?php echo $usecase->code ?></td>
+            <td><?php echo $usecase->nom ?></td>
+            <td><?php echo $usecase->poids ?></td>
+            <td><?php echo $usecase->avancement ?></td>
+            <td><?php echo $usecase->idProjet ?></td>
+            <td><?php echo $usecase->idDev ?></td>
+            <td><?php echo $this->tag->linkTo(array("usecase/edit/" . $usecase->code, "Edit")); ?></td>
+            <td><?php echo $this->tag->linkTo(array("usecase/delete/" . $usecase->code, "Delete")); ?></td>
+        </tr>
+    <?php } ?>
+    </tbody>
+    <tbody>
+        <tr>
+            <td colspan="2" align="right">
+                <table align="center">
+                    <tr>
+                        <td><?php echo $this->tag->linkTo("usecase/search", "First") ?></td>
+                        <td><?php echo $this->tag->linkTo("usecase/search?page=" . $page->before, "Previous") ?></td>
+                        <td><?php echo $this->tag->linkTo("usecase/search?page=" . $page->next, "Next") ?></td>
+                        <td><?php echo $this->tag->linkTo("usecase/search?page=" . $page->last, "Last") ?></td>
+                        <td><?php echo $page->current, "/", $page->total_pages ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

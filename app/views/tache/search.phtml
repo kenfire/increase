@@ -1,0 +1,54 @@
+<?php use Phalcon\Tag; ?>
+
+<?php echo $this->getContent(); ?>
+
+<table width="100%">
+    <tr>
+        <td align="left">
+            <?php echo $this->tag->linkTo(array("tache/index", "Go Back")); ?>
+        </td>
+        <td align="right">
+            <?php echo $this->tag->linkTo(array("tache/new", "Create ")); ?>
+        </td>
+    </tr>
+</table>
+
+<table class="browse" align="center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Libelle</th>
+            <th>Date</th>
+            <th>Avancement</th>
+            <th>CodeUseCase</th>
+         </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($page->items as $tache) { ?>
+        <tr>
+            <td><?php echo $tache->id ?></td>
+            <td><?php echo $tache->libelle ?></td>
+            <td><?php echo $tache->date ?></td>
+            <td><?php echo $tache->avancement ?></td>
+            <td><?php echo $tache->codeUseCase ?></td>
+            <td><?php echo $this->tag->linkTo(array("tache/edit/" . $tache->id, "Edit")); ?></td>
+            <td><?php echo $this->tag->linkTo(array("tache/delete/" . $tache->id, "Delete")); ?></td>
+        </tr>
+    <?php } ?>
+    </tbody>
+    <tbody>
+        <tr>
+            <td colspan="2" align="right">
+                <table align="center">
+                    <tr>
+                        <td><?php echo $this->tag->linkTo("tache/search", "First") ?></td>
+                        <td><?php echo $this->tag->linkTo("tache/search?page=" . $page->before, "Previous") ?></td>
+                        <td><?php echo $this->tag->linkTo("tache/search?page=" . $page->next, "Next") ?></td>
+                        <td><?php echo $this->tag->linkTo("tache/search?page=" . $page->last, "Last") ?></td>
+                        <td><?php echo $page->current, "/", $page->total_pages ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
