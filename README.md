@@ -5,3 +5,9 @@ A Phalcon web application to manage the progress of projects, and improve commun
 
 - [x] fork your own copy of this repository.
 - [x] read the project specifications : [Increase project specifications](http://slamwiki.kobject.net/slam4/php/phalcon/project/increase/)
+
+HOSOMI Kenzo
+    Auteur github: kenfire
+
+JEANNE Anthony
+    Auteur github: ajeanne
