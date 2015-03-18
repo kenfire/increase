@@ -44,6 +44,12 @@ class Projet extends \Phalcon\Mvc\Model
 	 */
 	public $reste;
 
+    /**
+     *
+     *@var integer
+     */
+	public $avancement;
+	
     public function initialize(){
         $this->belongsTo("idClient","User","id");
         $this->hasMany("id", "Usecase", "idProjet",array("alias"=>"usecases"));
@@ -67,11 +73,30 @@ class Projet extends \Phalcon\Mvc\Model
     }
 
 	public function afterFetch(){
+        // Calcule date restante
 		$datetime1 = new DateTime(date("d-m-Y"));
 		$datetime2 = new DateTime($this->dateFinPrevue);
 		$interval = $datetime1->diff($datetime2);
 
 		$this->reste = $interval->format('%R%a days');
+
+        // Calcule % avancement du projet
+        $usecases = Usecase::find(
+            array(
+                "idProjet = $this->id",
+                "order" => "avancement"
+            )
+        );
+        $diviseur = 0;
+        $val = 0;
+        foreach ($usecases as $usecase){
+            $diviseur = $diviseur + $usecase->poids;
+            $val = $val + ($usecase-> poids * $usecase->avancement);
+        }
+        $this->avancement = round($val / $diviseur,2);
+
+
+
 	}
 
 }
