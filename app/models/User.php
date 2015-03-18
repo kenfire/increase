@@ -35,6 +35,7 @@ class User extends \Phalcon\Mvc\Model
 
     public function initialize(){
         $this->hasMany("id","Projet","idClient",array("alias"=>"projets"));
+        $this->hasMany("id","Usecase","idDev",array("alias"=>"usecases"));
     }
 
     public function getNom(){
