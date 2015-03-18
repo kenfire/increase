@@ -71,3 +71,6 @@ body{
     padding-left :140px;
 }
 
+.progress{
+   border: 1px outset black;
+}
