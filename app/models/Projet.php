@@ -81,12 +81,7 @@ class Projet extends \Phalcon\Mvc\Model
 		$this->reste = $interval->format('%R%a days');
 
         // Calcule % avancement du projet
-        $usecases = Usecase::find(
-            array(
-                "idProjet = $this->id",
-                "order" => "avancement"
-            )
-        );
+        $usecases = $this->getUseCases();
         $diviseur = 0;
         $val = 0;
         foreach ($usecases as $usecase){
