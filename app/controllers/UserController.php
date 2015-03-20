@@ -229,10 +229,30 @@ class UserController extends ControllerBase
         $user = User::findFirstByid($id);
         $this->view->user = $user; // variable accessible dans la vue
 
+        // liste de tout les projets
         $projects = Projet::find(array(
             "idClient = $id"
         ));
         $this->view->projects = $projects;
+
+        foreach ($projects as $project){
+            // Transformation en chiffre (% d'avancement - % du temps écoulé)
+            $tmps = $project->getAvancement() -
+                strtotime($project->getTempsRestant()->format('%R%d'))/strtotime($project->getTempsTotal()->format('%R%d'));
+
+            // Class par défaut
+            $this->view->setVar("class", "progress-bar progress-bar-striped active ");
+
+            // Changement de la couleur de la bar de progression
+            $reste =  strtotime($project->getTempsRestant()->format('%R%a days'));
+            if (strtotime($reste) < 0) { // dateFinPrevue dépassée
+                $this->view->setVar("class","progress-bar progress-bar-danger progress-bar-striped active ");
+            } elseif ($tmps>= 0) {
+                $this->view->setVar("class","progress-bar progress-bar-success progress-bar-striped active ");
+            } else {
+                $this->view->setVar("class","progress-bar progress-bar-warning progress-bar-striped active ");
+            }
+        }
 
     }
 
@@ -251,7 +271,6 @@ class UserController extends ControllerBase
         }
         $this->view->tab_dev = $tab_dev;
         $this->view->tab_poids = $tab_poids;
-
     }
 
 }

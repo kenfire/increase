@@ -67,36 +67,54 @@ class Projet extends \Phalcon\Mvc\Model
         return $this->description;
     }
 
-    public function getdateLancement()
+    public function getDateLancement()
     {
         return $this->dateLancement;
     }
 
-    public function getdateFinPrevue()
+    public function getDateFinPrevue()
     {
         return $this->dateFinPrevue;
     }
 
-    public function afterFetch()
-    {
-        /*
-         * Calcule date restante
-        */
+    /*
+    * Calcule temps du projet
+    */
+    public function getTempsTotal(){
+        $start = new DateTime($this->getDateLancement());
+        $fin = new DateTime($this->getDateFinPrevue());
+        $total = $fin->diff($start);
+
+        return $total;
+    }
+
+    /*
+    * Calcule temps écoulé
+    */
+    public function getTempsEcoule(){
+        $today = new DateTime(date("d-m-Y"));
+        $begin = new DateTime($this->dateLancement);
+        $interval = $begin->diff($today);
+
+        return $interval;
+    }
+
+    /*
+    * Calcule date restante
+    */
+    public function getTempsRestant(){
         $today = new DateTime(date("d-m-Y"));
         $fin = new DateTime($this->dateFinPrevue);
         $interval = $today->diff($fin);
 
-        $this->reste = $interval->format('%R%a days');
-        /*
-         * Calcule temps du projet
-        */
-        $start = new DateTime($this->dateLancement);
-        $fin = new DateTime($this->dateFinPrevue);
-        $total = $fin->diff($start);
+        return $interval;
+    }
 
-        /*
-        * Calcule % avancement du projet
-        */
+    /*
+    * Calcule % avancement du projet
+    */
+    public function getAvancement(){
+
         $usecases = $this->getUseCases();
         $diviseur = 0;
         $val = 0;
@@ -104,28 +122,14 @@ class Projet extends \Phalcon\Mvc\Model
             $diviseur = $diviseur + $usecase->poids;
             $val = $val + ($usecase->poids * $usecase->avancement);
         }
-        $this->avancement = round($val / $diviseur, 2);
-        /*
-         * Calcule temps écoulé
-        */
-        $today = new DateTime(date("d-m-Y"));
-        $begin = new DateTime($this->dateLancement);
-        $interval2 = $begin->diff($today);
+        $resultat = $val / $diviseur;
 
-        // Transformation en chiffre (% d'avancement - % du temps écoulé)
-        $tmps = $val / $diviseur -
-        strtotime($interval2->format('%R%d'))/strtotime($total->format('%R%d'));
+        return $resultat;
+    }
 
-        // Class par défaut
-        $this->class = "progress-bar progress-bar-striped active ";
-
-        // Changement de la couleur de la bar de progression
-        if (strtotime($this->reste) < 0) { // dateFinPrevue dépassée
-            $this->class = "progress-bar progress-bar-danger progress-bar-striped active ";
-        } elseif ($tmps >= 0) {
-            $this->class = "progress-bar progress-bar-success progress-bar-striped active ";
-        } else {
-            $this->class = "progress-bar progress-bar-warning progress-bar-striped active ";
-        }
+    public function afterFetch()
+    {
+        $this->reste = $this->getTempsRestant()->format('%R%a days');
+        $this->avancement = round($this->getAvancement(), 2);
     }
 }
