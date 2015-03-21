@@ -137,4 +137,5 @@ class Projet extends \Phalcon\Mvc\Model
         $this->avancement = round($this->getAvancement(), 2);
         $this->class = $this->class;
     }
+
 }
