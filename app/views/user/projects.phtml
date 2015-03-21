@@ -16,7 +16,7 @@
             </td>
             <td>' . $project->reste . '</td>
 
-            <td> <button class="btn btn-default">Ouvrir...</button> </td>
+            <td> <button onclick="buttonAjax('.$i.')" class="btn btn-default">Ouvrir...</button> </td>
     </tr>';
     $i++;
     } ?>
@@ -25,3 +25,5 @@
         </pre>
     </tbody>
 </table>
+
+<?php echo $this->tag->javascriptInclude("js/projects.js"); ?>
