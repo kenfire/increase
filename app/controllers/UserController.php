@@ -258,6 +258,8 @@ class UserController extends ControllerBase
 
     public function projectAction($id){
         $projet = Projet::findFirst($id);
+
+
         $this->view->nom = $projet->getNom();
         $this->view->user = $projet->getUser()->getNom();
 
@@ -265,12 +267,24 @@ class UserController extends ControllerBase
         $this->view->dateLancement = $projet->getdateLancement();
         $this->view->dateFinPrevue = $projet->getdateFinPrevue();
 
-        foreach ($projet->getUsecases() as $usecase){
-            $tab_dev[] = $usecase->getUser()->getNom();
-            $tab_poids[] = $usecase->getPoids();
+
+        foreach($projet->getUsecases() as $usecases) {
+                $tab_usecase[] = $usecases->getCode();
+                $tab_poids[] = $usecases->getPoids();
+                $tab_equipe[] = $usecases->getUser()->getNom();
         }
-        $this->view->tab_dev = $tab_dev;
+
+        $this->view->tab_usecase = $tab_usecase;
         $this->view->tab_poids = $tab_poids;
+        $this->view->tab_equipe = $tab_equipe;
+
+        $dev = User::find();
+        foreach($dev as $devs){
+            $tab[] = $devs->getPourcentage();
+            $tab2[] = $devs->getProjet();
+        }
+        $this->view->tab = $tab;
+        $this->view->tab2 = $tab2;
     }
 
 }

@@ -14,15 +14,18 @@
 <div class="panel panel-info">
     <div class="panel-heading">Equipe</div>
     <div class="panel-body">
-        <table class="table table-condensed">
-
-        <?php
-        for($i = 0; $i<sizeof($tab_dev); $i++){
-            echo "<tr><td>".$tab_dev[$i]."</td>";
-            echo "<td>[".$tab_poids[$i]."]</td></tr>";
-        }
-        ?>
-
-        </table>
+        <div id="detailProject">
+            <table>
+            <?php
+                for($i=0; $i<sizeof($tab_usecase); $i++)
+                echo "<tr><td>".$tab_usecase[$i]."</td><td>".$tab_poids[$i]."</td><td>".$tab_equipe[$i]."</td></tr>";
+            ?>
+            <br>
+            <?php
+                for($i=0; $i<sizeof($tab); $i++)
+                echo "<tr><td>".$tab[$i]."</td><td>".$tab2[$i]."</td></tr>";
+            ?>
+            </table>
+        </div>
     </div>
 </div>

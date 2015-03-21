@@ -132,4 +132,5 @@ class Projet extends \Phalcon\Mvc\Model
         $this->reste = $this->getTempsRestant()->format('%R%a days');
         $this->avancement = round($this->getAvancement(), 2);
     }
+
 }
