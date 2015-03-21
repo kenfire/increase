@@ -1,5 +1,5 @@
 <?php
- 
+
 use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Paginator\Adapter\Model as Paginator;
 
@@ -46,7 +46,7 @@ class UserController extends ControllerBase
 
         $paginator = new Paginator(array(
             "data" => $user,
-            "limit"=> 10,
+            "limit" => 10,
             "page" => $numberPage
         ));
 
@@ -88,7 +88,7 @@ class UserController extends ControllerBase
             $this->tag->setDefault("password", $user->password);
             $this->tag->setDefault("identite", $user->identite);
             $this->tag->setDefault("role", $user->role);
-            
+
         }
     }
 
@@ -111,7 +111,7 @@ class UserController extends ControllerBase
         $user->password = $this->request->getPost("password");
         $user->identite = $this->request->getPost("identite");
         $user->role = $this->request->getPost("role");
-        
+
 
         if (!$user->save()) {
             foreach ($user->getMessages() as $message) {
@@ -163,7 +163,7 @@ class UserController extends ControllerBase
         $user->password = $this->request->getPost("password");
         $user->identite = $this->request->getPost("identite");
         $user->role = $this->request->getPost("role");
-        
+
 
         if (!$user->save()) {
 
@@ -225,7 +225,8 @@ class UserController extends ControllerBase
         ));
     }
 
-    public function projectsAction($id){
+    public function projectsAction($id)
+    {
         $user = User::findFirstByid($id);
         $this->view->user = $user; // variable accessible dans la vue
 
@@ -234,29 +235,36 @@ class UserController extends ControllerBase
             "idClient = $id"
         ));
         $this->view->projects = $projects;
-
-        foreach ($projects as $project){
+        $i = 0;
+        foreach ($projects as $project) {
             // Transformation en chiffre (% d'avancement - % du temps écoulé)
             $tmps = $project->getAvancement() -
-                strtotime($project->getTempsRestant()->format('%R%d'))/strtotime($project->getTempsTotal()->format('%R%d'));
+                strtotime($project->getTempsRestant()->format('%R%d')) / strtotime($project->getTempsTotal()->format('%R%d'));
 
             // Class par défaut
-            $this->view->setVar("class", "progress-bar progress-bar-striped active ");
+            $class[$i] = "progress-bar progress-bar-striped active ";
 
             // Changement de la couleur de la bar de progression
-            $reste =  strtotime($project->getTempsRestant()->format('%R%a days'));
+            $reste = strtotime($project->getTempsRestant()->format('%R%a days'));
+
             if (strtotime($reste) < 0) { // dateFinPrevue dépassée
-                $this->view->setVar("class","progress-bar progress-bar-danger progress-bar-striped active ");
-            } elseif ($tmps>= 0) {
-                $this->view->setVar("class","progress-bar progress-bar-success progress-bar-striped active ");
+                $class[$i] = "progress-bar progress-bar-danger progress-bar-striped active ";
+            } elseif ($tmps >= 0) {
+                $class[$i] = "progress-bar progress-bar-success progress-bar-striped active ";
             } else {
-                $this->view->setVar("class","progress-bar progress-bar-warning progress-bar-striped active ");
+                $class[$i]  = "progress-bar progress-bar-warning progress-bar-striped active ";
             }
+
+            $i++;
         }
+
+
+        $this->view->class= $class;
 
     }
 
-    public function projectAction($id){
+    public function projectAction($id)
+    {
         $projet = Projet::findFirst($id);
         $this->view->nom = $projet->getNom();
         $this->view->user = $projet->getUser()->getNom();
@@ -265,7 +273,7 @@ class UserController extends ControllerBase
         $this->view->dateLancement = $projet->getdateLancement();
         $this->view->dateFinPrevue = $projet->getdateFinPrevue();
 
-        foreach ($projet->getUsecases() as $usecase){
+        foreach ($projet->getUsecases() as $usecase) {
             $tab_dev[] = $usecase->getUser()->getNom();
             $tab_poids[] = $usecase->getPoids();
         }
