@@ -255,18 +255,21 @@ class UserController extends ControllerBase
                 $class[$i] = "progress-bar progress-bar-warning progress-bar-striped active ";
             }
 
+            //Bouton ouvrir d'un projet
+            $j = $i+1;
+            $this->jquery->getAndBindTo("#btnOuvrir$j", "click", "user/project/".$j."/", "#response");
+
             $i++;
         }
-
-
         $this->view->class = $class;
+
+
 
     }
 
     public function projectAction($id)
     {
         $projet = Projet::findFirst($id);
-
 
         $this->view->nom = $projet->getNom();
         $this->view->user = $projet->getUser()->getNom();
@@ -292,11 +295,5 @@ class UserController extends ControllerBase
         }
         $this->view->tab = $tab;
         $this->view->tab2 = $tab2;
-
-        $this->jquery->getAndBindTo("#btnOuvrir", "click", "increase/getResponse", "#response");
-    }
-
-    public function getResponseAction(){
-        $this->view->disable();
     }
 }
