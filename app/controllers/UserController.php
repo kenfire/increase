@@ -252,14 +252,14 @@ class UserController extends ControllerBase
             } elseif ($tmps >= 0) {
                 $class[$i] = "progress-bar progress-bar-success progress-bar-striped active ";
             } else {
-                $class[$i]  = "progress-bar progress-bar-warning progress-bar-striped active ";
+                $class[$i] = "progress-bar progress-bar-warning progress-bar-striped active ";
             }
 
             $i++;
         }
 
 
-        $this->view->class= $class;
+        $this->view->class = $class;
 
     }
 
@@ -275,10 +275,10 @@ class UserController extends ControllerBase
         $this->view->dateLancement = $projet->getdateLancement();
         $this->view->dateFinPrevue = $projet->getdateFinPrevue();
 
-        foreach($projet->getUsecases() as $usecases) {
-                $tab_usecase[] = $usecases->getCode();
-                $tab_poids[] = $usecases->getPoids();
-                $tab_equipe[] = $usecases->getUser()->getNom();
+        foreach ($projet->getUsecases() as $usecases) {
+            $tab_usecase[] = $usecases->getCode();
+            $tab_poids[] = $usecases->getPoids();
+            $tab_equipe[] = $usecases->getUser()->getNom();
         }
 
         $this->view->tab_usecase = $tab_usecase;
@@ -286,12 +286,17 @@ class UserController extends ControllerBase
         $this->view->tab_equipe = $tab_equipe;
 
         $dev = User::find();
-        foreach($dev as $devs){
+        foreach ($dev as $devs) {
             $tab[] = $devs->getPourcentage();
             $tab2[] = $devs->getProjet();
         }
         $this->view->tab = $tab;
         $this->view->tab2 = $tab2;
+
+        $this->jquery->getAndBindTo("#btnOuvrir", "click", "increase/getResponse", "#response");
     }
 
+    public function getResponseAction(){
+        $this->view->disable();
+    }
 }

@@ -7,6 +7,7 @@
 		<?php echo $this->tag->stylesheetLink('css/styles.css'); ?>
 		<?php echo $this->tag->javascriptInclude('js/jquery.min.js'); ?>
 		<?php echo $this->tag->javascriptInclude('js/bootstrap.min.js'); ?>
+        <?php echo $jquery; ?>
 	</head>
 	<body>
 	<div class="bs-docs-header">
