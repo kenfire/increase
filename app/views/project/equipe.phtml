@@ -1,0 +1,11 @@
+<div class="panel panel-info">
+    <div class="panel-heading">Equipe</div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <?php
+            foreach($devs as $dev)
+                echo "<tr><td><b>".$dev->getIdentite()."</b> ".$poidsDevs[$dev->getId()]."%</td></tr>";
+            ?>
+        </table>
+    </div>
+</div>

@@ -265,9 +265,6 @@ class UserController extends ControllerBase
         $this->view->class = $class;
         $this->jquery->compile($this->view);
 
-
-
-
     }
 
     public function projectAction($id)
@@ -293,7 +290,7 @@ class UserController extends ControllerBase
         $this->view->tab_poids = $tab_poids;
         $this->view->tab_equipe = $tab_equipe;*/
 
-        $devs = [];
+       /* $devs = [];
         $poidsDevs = [];
         $poidsProjet;
         foreach($projet->getUsecases() as $usecases){
@@ -311,7 +308,9 @@ class UserController extends ControllerBase
             $poidsDevs[$i] = round ($poidsDevs[$i] / $poidsProjet * 100, 0);
         }
 
-        $this->view->poidsDevs = $poidsDevs;
+        $this->view->poidsDevs = $poidsDevs;*/
 
+        $this->jquery->getDeferred("project/equipe/".$id."/", "#detailProject");
+        $this->jquery->compile($this->view);
     }
 }

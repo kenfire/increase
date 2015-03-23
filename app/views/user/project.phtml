@@ -11,16 +11,4 @@
     </div>
 </div>
 <hr>
-<div class="panel panel-info">
-    <div class="panel-heading">Equipe</div>
-    <div class="panel-body">
-        <div id="detailProject">
-            <table class="table table-striped">
-                <?php
-                foreach($devs as $dev)
-                    echo "<tr><td><b>".$dev->getIdentite()."</b> ".$poidsDevs[$dev->getId()]."%</td></tr>";
-                ?>
-            </table>
-        </div>
-    </div>
-</div>
+<div id="detailProject"></div>
