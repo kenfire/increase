@@ -13,7 +13,7 @@ class ProjectController extends ControllerBase
 
         $devs = [];
         $poidsDevs = [];
-        $poidsProjet;
+        $poidsProjet = null;
         foreach($projet->getUsecases() as $usecases){
             if (!in_array($usecases->getUser(), $devs)){
                 $devs.array_push($devs, $usecases->getUser());
@@ -30,7 +30,6 @@ class ProjectController extends ControllerBase
         }
 
         $this->view->poidsDevs = $poidsDevs;
-
     }
     public function messagesAction()
     {
