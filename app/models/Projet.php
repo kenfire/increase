@@ -57,6 +57,11 @@ class Projet extends \Phalcon\Mvc\Model
         $this->hasManyToMany("id", "Usecase", "idProjet", "idDev", "User", "id", array("alias" => "users"));
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function getNom()
     {
         return $this->nom;
@@ -75,6 +80,11 @@ class Projet extends \Phalcon\Mvc\Model
     public function getDateFinPrevue()
     {
         return $this->dateFinPrevue;
+    }
+
+    public function getIdClient()
+    {
+        return $this->idClient;
     }
 
     /*

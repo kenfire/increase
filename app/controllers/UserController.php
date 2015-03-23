@@ -276,16 +276,16 @@ class UserController extends ControllerBase
         $projet = Projet::findFirst($id);
 
         $this->view->nom = $projet->getNom();
-        $this->view->user = $projet->getUser()->getNom();
+        $this->view->user = $projet->getUser()->getIdentite();
 
         $this->view->description = $projet->getDescription();
-        $this->view->dateLancement = $projet->getdateLancement();
-            $this->view->dateFinPrevue = $projet->getdateFinPrevue();
+        $this->view->dateLancement = $projet->getDateLancement();
+            $this->view->dateFinPrevue = $projet->getDateFinPrevue();
 
         foreach ($projet->getUsecases() as $usecases) {
             $tab_usecase[] = $usecases->getCode();
             $tab_poids[] = $usecases->getPoids();
-            $tab_equipe[] = $usecases->getUser()->getNom();
+            $tab_equipe[] = $usecases->getUser()->getIdentite();
 
         }
 

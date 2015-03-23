@@ -47,16 +47,21 @@ class Usecase extends \Phalcon\Mvc\Model
     public function getCode(){
         return $this->code;
     }
-    public function getidDev(){
-        return $this->idDev;
-    }
 
     public function getPoids(){
         return $this->poids;
     }
 
-    public function getidProjet(){
+    public function getAvancement(){
+        return $this->avancement;
+    }
+
+    public function getIdProjet(){
         return $this->idProjet;
+    }
+
+    public function getIdDev(){
+        return $this->idDev;
     }
 
 }

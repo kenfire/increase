@@ -39,8 +39,22 @@ class User extends \Phalcon\Mvc\Model
         $this->hasManyToMany("id", "Usecase", "idDev", "idProjet", "Projet", "id", array("alias" => "projetsdevs"));
     }
 
-    public function getNom(){
+    public function getId(){
+        return $this->id;
+    }
+
+    public function getMail(){
+        return $this->mail;
+    }
+    public function getPasseword(){
+        return $this->passeword;
+    }
+    public function getIdentite(){
         return $this->identite;
+    }
+
+    public function getRole(){
+        return $this->role;
     }
 
     public function getPourcentage($id){
