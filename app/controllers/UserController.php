@@ -270,7 +270,7 @@ class UserController extends ControllerBase
 
     public function projectAction($id)
     {
-        $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
+        //$this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
         $projet = Projet::findFirst($id);
 
         $this->view->nom = $projet->getNom();
@@ -310,9 +310,11 @@ class UserController extends ControllerBase
 //        }
 //
 //        $this->view->poidsDevs = $poidsDevs;
-        $this->jquery->getAndBindTo("#btnEquipe", "click", "user/project/2/", "#equipe");
+        //$this->jquery->getAndBindTo("#btnEquipe", "click", "user/project/2/", "#equipe");
         //$this->jquery->get("project/equipe/1/", "#equipe");
         // Envoit du JS à la vue
+        //$this->jquery->compile($this->view);
+        $this->jquery->get("project/equipe/".$id, "#detailProject");
         $this->jquery->compile($this->view);
     }
 
