@@ -270,7 +270,7 @@ class UserController extends ControllerBase
 
     public function projectAction($id)
     {
-        //$this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
+
         $projet = Projet::findFirst($id);
 
         $this->view->nom = $projet->getNom();
@@ -280,54 +280,14 @@ class UserController extends ControllerBase
         $this->view->dateLancement = $projet->getDateLancement();
         $this->view->dateFinPrevue = $projet->getDateFinPrevue();
 
-//        foreach ($projet->getUsecases() as $usecases) {
-//            $tab_usecase[] = $usecases->getCode();
-//            $tab_poids[] = $usecases->getPoids();
-//            $tab_equipe[] = $usecases->getUser()->getIdentite();
-//
-//        }
-//
-//        $this->view->tab_usecase = $tab_usecase;
-//        $this->view->tab_poids = $tab_poids;
-//        $this->view->tab_equipe = $tab_equipe;
-//
-//        $devs = [];
-//        $poidsDevs = [];
-//        $poidsProjet;
-//        foreach($projet->getUsecases() as $usecases){
-//            if (!in_array($usecases->getUser(), $devs)){
-//                $devs.array_push($devs, $usecases->getUser());
-//            }
-//            $poidsDevs[$usecases->getUser()->getId()] += $usecases->getPoids();
-//            $poidsProjet += $usecases->getPoids();
-//        }
-//
-//        $this->view->devs = $devs;
-//
-//        for($i=0; $i<sizeof($poidsDevs); $i++)
-//        {
-//            $poidsDevs[$i] = round ($poidsDevs[$i] / $poidsProjet * 100, 0);
-//        }
-//
-//        $this->view->poidsDevs = $poidsDevs;
-        //$this->jquery->getAndBindTo("#btnEquipe", "click", "user/project/2/", "#equipe");
-        //$this->jquery->get("project/equipe/1/", "#equipe");
-        // Envoit du JS à la vue
-        //$this->jquery->compile($this->view);
         $this->jquery->get("project/equipe/".$id, "#detailProject");
+        $this->jquery->getAndBindTo("#btnMessages", "click", "project/messages/".$id, "#divMessages");
         $this->jquery->compile($this->view);
+
     }
 
     public function usecaseAction($id)
     {
-//        $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
-//        $usecases = Usecase::find($id);
-//        foreach ($usecases as $usecase){
-//            $equipe = User::find($usecase->getIdDev());
-//        }
-//
-//
-//        $this->jquery->getDeferred("project/usevase/".$id."/", "#detailProject");
-//        $this->jquery->compile($this->view);
+
     }
 }

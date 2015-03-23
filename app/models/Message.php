@@ -45,4 +45,12 @@ class Message extends \Phalcon\Mvc\Model
      */
     public $idFil;
 
+    public function initialize()
+    {
+        $this->belongsTo("idUser", "User", "id");
+    }
+
+    public function getContent(){
+        return $this->content;
+    }
 }

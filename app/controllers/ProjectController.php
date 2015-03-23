@@ -31,8 +31,18 @@ class ProjectController extends ControllerBase
 
         $this->view->poidsDevs = $poidsDevs;
     }
-    public function messagesAction()
+
+    public function messagesAction($id)
     {
+        $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
+        $projet = Projet::findFirst($id);
+
+
+        foreach($projet->getMessages() as $messages){
+            $message = $messages->getContent();
+        }
+        $this->view->message = $message;
+
 
     }
 }
