@@ -43,7 +43,7 @@ class User extends \Phalcon\Mvc\Model
         return $this->identite;
     }
 
-    public function getPourcentage(){
+    public function getPourcentage($id){
         $user = $this->getUsecases();
         $poids = 0;
         foreach($user as $usecase){

@@ -55,5 +55,8 @@ class Usecase extends \Phalcon\Mvc\Model
         return $this->poids;
     }
 
+    public function getidProjet(){
+        return $this->idProjet;
+    }
 
 }

@@ -265,13 +265,15 @@ class UserController extends ControllerBase
 
         $this->view->description = $projet->getDescription();
         $this->view->dateLancement = $projet->getdateLancement();
-        $this->view->dateFinPrevue = $projet->getdateFinPrevue();
+            $this->view->dateFinPrevue = $projet->getdateFinPrevue();
 
 
-        foreach($projet->getUsecases() as $usecases) {
+            foreach($projet->getUsecases() as $usecases) {
+
                 $tab_usecase[] = $usecases->getCode();
                 $tab_poids[] = $usecases->getPoids();
                 $tab_equipe[] = $usecases->getUser()->getNom();
+
         }
 
         $this->view->tab_usecase = $tab_usecase;
@@ -279,7 +281,7 @@ class UserController extends ControllerBase
         $this->view->tab_equipe = $tab_equipe;
 
         $dev = User::find();
-        foreach($dev as $devs){
+        foreach($dev as $devs){  
             $tab[] = $devs->getPourcentage();
             $tab2[] = $devs->getProjet();
         }
