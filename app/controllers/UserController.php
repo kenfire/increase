@@ -280,9 +280,9 @@ class UserController extends ControllerBase
 
         $this->view->description = $projet->getDescription();
         $this->view->dateLancement = $projet->getDateLancement();
-            $this->view->dateFinPrevue = $projet->getDateFinPrevue();
+        $this->view->dateFinPrevue = $projet->getDateFinPrevue();
 
-        foreach ($projet->getUsecases() as $usecases) {
+    /*    foreach ($projet->getUsecases() as $usecases) {
             $tab_usecase[] = $usecases->getCode();
             $tab_poids[] = $usecases->getPoids();
             $tab_equipe[] = $usecases->getUser()->getIdentite();
@@ -291,15 +291,27 @@ class UserController extends ControllerBase
 
         $this->view->tab_usecase = $tab_usecase;
         $this->view->tab_poids = $tab_poids;
-        $this->view->tab_equipe = $tab_equipe;
+        $this->view->tab_equipe = $tab_equipe;*/
 
-        $dev = User::find();
-
-        foreach ($dev as $devs) {
-            $tab[] = $devs->getPourcentage();
-            $tab2[] = $devs->getProjet();
+        $devs = [];
+        $poidsDevs = [];
+        $poidsProjet;
+        foreach($projet->getUsecases() as $usecases){
+            if (!in_array($usecases->getUser(), $devs)){
+                $devs.array_push($devs, $usecases->getUser());
+            }
+            $poidsDevs[$usecases->getUser()->getId()] += $usecases->getPoids();
+            $poidsProjet += $usecases->getPoids();
         }
-        $this->view->tab = $tab;
-        $this->view->tab2 = $tab2;
+
+        $this->view->devs = $devs;
+
+        for($i=0; $i<sizeof($poidsDevs); $i++)
+        {
+            $poidsDevs[$i] = round ($poidsDevs[$i] / $poidsProjet * 100, 0);
+        }
+
+        $this->view->poidsDevs = $poidsDevs;
+
     }
 }

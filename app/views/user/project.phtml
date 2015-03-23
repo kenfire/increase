@@ -15,16 +15,11 @@
     <div class="panel-heading">Equipe</div>
     <div class="panel-body">
         <div id="detailProject">
-            <table>
-            <?php
-                for($i=0; $i<sizeof($tab_usecase); $i++)
-                echo "<tr><td>".$tab_usecase[$i]."</td><td>".$tab_poids[$i]."</td><td>".$tab_equipe[$i]."</td></tr>";
-            ?>
-            <br>
-            <?php
-                for($i=0; $i<sizeof($tab); $i++)
-                echo "<tr><td>".$tab[$i]."</td><td>".$tab2[$i]."</td></tr>";
-            ?>
+            <table class="table table-striped">
+                <?php
+                foreach($devs as $dev)
+                    echo "<tr><td><b>".$dev->getIdentite()."</b> ".$poidsDevs[$dev->getId()]."%</td></tr>";
+                ?>
             </table>
         </div>
     </div>
