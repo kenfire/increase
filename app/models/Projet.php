@@ -80,7 +80,8 @@ class Projet extends \Phalcon\Mvc\Model
     /*
     * Calcule temps du projet
     */
-    public function getTempsTotal(){
+    public function getTempsTotal()
+    {
         $start = new DateTime($this->getDateLancement());
         $fin = new DateTime($this->getDateFinPrevue());
         $total = $fin->diff($start);
@@ -91,7 +92,8 @@ class Projet extends \Phalcon\Mvc\Model
     /*
     * Calcule temps écoulé
     */
-    public function getTempsEcoule(){
+    public function getTempsEcoule()
+    {
         $today = new DateTime(date("d-m-Y"));
         $begin = new DateTime($this->dateLancement);
         $interval = $begin->diff($today);
@@ -102,7 +104,8 @@ class Projet extends \Phalcon\Mvc\Model
     /*
     * Calcule date restante
     */
-    public function getTempsRestant(){
+    public function getTempsRestant()
+    {
         $today = new DateTime(date("d-m-Y"));
         $fin = new DateTime($this->dateFinPrevue);
         $interval = $today->diff($fin);
@@ -113,7 +116,8 @@ class Projet extends \Phalcon\Mvc\Model
     /*
     * Calcule % avancement du projet
     */
-    public function getAvancement(){
+    public function getAvancement()
+    {
 
         $usecases = $this->getUseCases();
         $diviseur = 0;
