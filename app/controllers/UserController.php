@@ -1,6 +1,7 @@
 <?php
 
 use Phalcon\Mvc\Model\Criteria;
+use Phalcon\Mvc\View;
 use Phalcon\Paginator\Adapter\Model as Paginator;
 
 class UserController extends ControllerBase
@@ -262,6 +263,8 @@ class UserController extends ControllerBase
             $i++;
         }
         $this->view->class = $class;
+        $this->jquery->compile($this->view);
+
 
 
 
@@ -269,6 +272,7 @@ class UserController extends ControllerBase
 
     public function projectAction($id)
     {
+        $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
         $projet = Projet::findFirst($id);
 
         $this->view->nom = $projet->getNom();
