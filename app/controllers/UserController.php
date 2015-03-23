@@ -263,7 +263,7 @@ class UserController extends ControllerBase
             $i++;
         }
         $this->view->class = $class;
-        // Evoit du JS à la vue
+        // Envoit du JS à la vue
         $this->jquery->compile($this->view);
 
     }
@@ -310,12 +310,14 @@ class UserController extends ControllerBase
 //        }
 //
 //        $this->view->poidsDevs = $poidsDevs;
-        $this->jquery->get("project/equipe/1/", "#equipe");
+        $this->jquery->getAndBindTo("#btnEquipe", "click", "user/project/2/", "#equipe");
+        //$this->jquery->get("project/equipe/1/", "#equipe");
+        // Envoit du JS à la vue
         $this->jquery->compile($this->view);
     }
 
-//    public function usecaseAction($id)
-//    {
+    public function usecaseAction($id)
+    {
 //        $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
 //        $usecases = Usecase::find($id);
 //        foreach ($usecases as $usecase){
@@ -325,5 +327,5 @@ class UserController extends ControllerBase
 //
 //        $this->jquery->getDeferred("project/usevase/".$id."/", "#detailProject");
 //        $this->jquery->compile($this->view);
-//    }
+    }
 }

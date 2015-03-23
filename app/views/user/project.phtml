@@ -1,16 +1,17 @@
-﻿<div class="alert alert-info"><?php echo $nom." [".$user."]" ?></div>
+﻿<div class="alert alert-info"><?php echo $nom . " [" . $user . "]" ?></div>
 <hr>
 <div class="panel panel-info">
     <div class="panel-heading">Détails du projet</div>
     <div class="panel-body">
-<?php
-    echo "<b>Description: </b><p>".$description."</p>";
-    echo "<b>Date de Lancement: </b>".$dateLancement." ";
-    echo " <b>Date de Fin prévue: </b>".$dateFinPrevue;
-?>
+        <?php
+        echo "<b>Description: </b><p>" . $description . "</p>";
+        echo "<b>Date de Lancement: </b>" . $dateLancement . " ";
+        echo " <b>Date de Fin prévue: </b>" . $dateFinPrevue;
+        ?>
     </div>
 </div>
 <hr/>
+<button id="btnEquipe" class="btn btn-default">Voir la superbe équipe</button>
 <div id="equipe"></div>
 <?php
 echo $script_foot;

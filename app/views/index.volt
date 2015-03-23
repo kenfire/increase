@@ -2,12 +2,13 @@
 <html>
 	<head>
 		{{ get_title() }}
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">		
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        {{jquery}}
 		{{ stylesheet_link("css/bootstrap.min.css") }}
 		{{ stylesheet_link("css/styles.css") }}
 		{{ javascript_include('js/jquery.min.js') }}
 		{{ javascript_include('js/bootstrap.min.js') }}
-        {{jquery}}
+
 	</head>
 	<body>
 	<div class="bs-docs-header">
