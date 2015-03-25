@@ -8,6 +8,7 @@
 		{{ javascript_include('js/jquery.min.js') }}
 		{{ javascript_include('js/bootstrap.min.js') }}
 		{{ javascript_include('js/user.js') }}
+		{{ javascript_include('js/project.js') }}
 
 	</head>
 	<body>
