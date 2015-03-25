@@ -270,7 +270,7 @@ class UserController extends ControllerBase
 
     public function projectAction($id)
     {
-
+        $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
         $projet = Projet::findFirst($id);
 
         $this->view->nom = $projet->getNom();

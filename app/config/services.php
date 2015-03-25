@@ -81,7 +81,7 @@ $di->set('session', function () {
 
 $di->set("jquery",function(){
     $jquery= new Ajax\JsUtils(array("driver"=>"Jquery"));
-    $jquery->ui(new Ajax\JqueryUI());//optional for JQuery UI
+   // $jquery->ui(new Ajax\JqueryUI());//optional for JQuery UI
     $jquery->bootstrap(new Ajax\Bootstrap());//Optional for Twitter Bootstrap
 
     return $jquery;
