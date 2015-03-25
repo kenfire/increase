@@ -1,12 +1,11 @@
-<h2>Mes projets <?php echo $user->identite ?></h2>
+<h2>Mes projets <?php echo $author->identite ?></h2>
 <table class="table">
     <tbody>
-
     <?php
-        $i = 0;
-        foreach ($projects as $project) {
-            $j = $i+1;
-            echo '<tr>
+    $i = 0;
+    foreach ($projects as $project) {
+        $j = $i+1;
+        echo '<tr>
                 <td> ' . $project->nom . '</td>
                 <td width="500px">
                 <div class="progress">
@@ -21,8 +20,8 @@
                 class="btn btn-default">Ouvrir..
                 .</button> </td>
         </tr>';
-            $i++;
-        }
+        $i++;
+    }
     ?>
     <hr/>
     </tbody>

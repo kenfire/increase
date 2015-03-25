@@ -7,6 +7,8 @@
 		<?php echo $this->tag->stylesheetLink('css/styles.css'); ?>
 		<?php echo $this->tag->javascriptInclude('js/jquery.min.js'); ?>
 		<?php echo $this->tag->javascriptInclude('js/bootstrap.min.js'); ?>
+		<?php echo $this->tag->javascriptInclude('js/user.js'); ?>
+		<?php echo $this->tag->javascriptInclude('js/project.js'); ?>
 
 	</head>
 	<body>
