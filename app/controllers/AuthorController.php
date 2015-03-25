@@ -6,9 +6,7 @@
  * Time: 11:23
  */
 
-use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Mvc\View;
-use Phalcon\Paginator\Adapter\Model as Paginator;
 
 class AuthorController extends ControllerBase
 {
@@ -17,10 +15,20 @@ class AuthorController extends ControllerBase
         $author = User::findFirstByid($id);
         $this->view->author = $author; // variable accessible dans la vue
 
+        // liste de tout les id des projets aux quels à participer le développeur
+        $phql = "SELECT DISTINCT (idPorjet)  FROM user where idDev = $id ORDER BY idPorjet";
+
+        $idProjets = $this->modelsManager->executeQuery($phql);
         // liste de tout les projets
-        $projects = Projet::find(array(
-            "idClient = $id"
-        ));
+
+        $k=0;
+        foreach ($idProjets as $id) {
+            $project = Projet::findFirst(array(
+                "id = $id"
+            ));
+            $projects[$k] = $project;
+            $k++;
+        }
         $this->view->projects = $projects;
         $i = 0;
         foreach ($projects as $project) {
@@ -43,8 +51,8 @@ class AuthorController extends ControllerBase
             }
 
             //Bouton ouvrir d'un projet
-            $j = $i+1;
-            $this->jquery->getAndBindTo("#btnOuvrir$j", "click", "author/project/".$j."/", "#response");
+            $j = $i + 1;
+            $this->jquery->getAndBindTo("#btnOuvrir$j", "click", "user/project/" . $j . "/", "#response");
 
             $i++;
         }
@@ -52,23 +60,6 @@ class AuthorController extends ControllerBase
         // Envoit du JS à la vue
         $this->jquery->compile($this->view);
 
-    }
-
-    public function projectAction($id)
-    {
-        $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
-        $projet = Projet::findFirst($id);
-
-        $this->view->nom = $projet->getNom();
-        $this->view->author = $projet->getUser()->getIdentite();
-
-        $this->view->description = $projet->getDescription();
-        $this->view->dateLancement = $projet->getDateLancement();
-        $this->view->dateFinPrevue = $projet->getDateFinPrevue();
-
-        $this->jquery->get("project/equipe/".$id, "#detailProject");
-        $this->jquery->getAndBindTo("#btnMessages", "click", "project/messages/".$id, "#divMessages");
-        $this->jquery->compile($this->view);
 
     }
 }
