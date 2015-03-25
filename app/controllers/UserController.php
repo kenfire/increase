@@ -284,5 +284,11 @@ class UserController extends ControllerBase
         $this->jquery->getAndBindTo("#btnMessages", "click", "project/messages/".$id, "#divMessages");
         $this->jquery->compile($this->view);
 
+        $nbmessage = 0;
+        foreach($projet->getAllMessages() as $nbmessage){
+            $nbmessage += 1;
+        }
+
+        $this->view->nbmessage = $nbmessage;
     }
 }

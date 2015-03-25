@@ -14,6 +14,7 @@ class ProjectController extends ControllerBase
         $devs = [];
         $poidsDevs = [];
         $poidsProjet = null;
+
         foreach($projet->getUsecases() as $usecases){
             if (!in_array($usecases->getUser(), $devs)){
                 $devs.array_push($devs, $usecases->getUser());
@@ -37,12 +38,15 @@ class ProjectController extends ControllerBase
         $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
         $projet = Projet::findFirst($id);
 
+        $emetteur = [];
+        $message = [];
 
-        foreach($projet->getMessages() as $messages){
-            $message = $messages->getContent();
+        foreach($projet->getAllMessages() as $messages){
+            $emetteur.array_push($emetteur, $messages->getUser());
+            $message.array_push($message, $messages);
+            //$message = $messages->getContent();
         }
+        $this->view->emetteur = $emetteur;
         $this->view->message = $message;
-
-
     }
 }

@@ -54,7 +54,7 @@ class Projet extends \Phalcon\Mvc\Model
     {
         $this->belongsTo("idClient", "User", "id");
         $this->hasMany("id", "Usecase", "idProjet", array("alias" => "usecases"));
-        $this->hasMany("id", "Message", "idProjet", array("alias" => "messages"));
+        $this->hasMany("id", "Message", "idProjet", array("alias" => "AllMessages"));
         $this->hasManyToMany("id", "Usecase", "idProjet", "idDev", "User", "id", array("alias" => "users"));
     }
 
