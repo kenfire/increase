@@ -285,9 +285,4 @@ class UserController extends ControllerBase
         $this->jquery->compile($this->view);
 
     }
-
-    public function usecaseAction($id)
-    {
-
-    }
 }
