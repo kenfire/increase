@@ -3,7 +3,6 @@
 	<head>
 		<?php echo $this->tag->getTitle(); ?>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <?php echo $jquery; ?>
 		<?php echo $this->tag->stylesheetLink('css/bootstrap.min.css'); ?>
 		<?php echo $this->tag->stylesheetLink('css/styles.css'); ?>
 		<?php echo $this->tag->javascriptInclude('js/jquery.min.js'); ?>
