@@ -23,13 +23,13 @@ class ProjectController extends ControllerBase
             $poidsProjet += $usecases->getPoids();
         }
 
-        $this->view->devs = $devs;
 
-        for($i=0; $i<sizeof($poidsDevs); $i++)
-        {
+
+        for($i=0; $i<sizeof($poidsDevs); $i++){
             $poidsDevs[$i] = round ($poidsDevs[$i] / $poidsProjet * 100, 0);
         }
 
+        $this->view->devs = $devs;
         $this->view->poidsDevs = $poidsDevs;
     }
 
@@ -46,7 +46,15 @@ class ProjectController extends ControllerBase
             $message.array_push($message, $messages);
             //$message = $messages->getContent();
         }
+
         $this->view->emetteur = $emetteur;
         $this->view->message = $message;
+        $this->jquery->compile($this->view);
+
+    }
+
+    public function authorAction($idProject, $idAuthor)
+    {
+
     }
 }

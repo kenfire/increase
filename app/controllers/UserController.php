@@ -235,7 +235,7 @@ class UserController extends ControllerBase
         $projects = Projet::find(array(
             "idClient = $id"
         ));
-        $this->view->projects = $projects;
+
         $i = 0;
         foreach ($projects as $project) {
             // Transformation en chiffre (% d'avancement - % du temps écoulé)
@@ -262,7 +262,10 @@ class UserController extends ControllerBase
 
             $i++;
         }
+
+        $this->view->projects = $projects;
         $this->view->class = $class;
+
         // Envoit du JS à la vue
         $this->jquery->compile($this->view);
 
@@ -286,6 +289,7 @@ class UserController extends ControllerBase
         $this->jquery->compile($this->view);
 
         $nbmessage = 0;
+
         foreach($projet->getAllMessages() as $nbmessage){
             $nbmessage += 1;
         }
