@@ -11,3 +11,14 @@ HOSOMI Kenzo
 
 JEANNE Anthony
     Auteur github: ajeanne
+    
+Réalisation:
+1- Models // DONE
+2- Liste des projets d'un client// DONE
+2.2- Visualisation des retards // DONE
+2.3- Ouverture de projet // DONE
+3- Projet d'un client // DONE
+3.2- Message // En partie terminé
+
+Débug:
+Encodage des pages en UTF-8 compatible avec la base de données
