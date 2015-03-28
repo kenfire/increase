@@ -266,6 +266,10 @@ class UserController extends ControllerBase
         $this->view->projects = $projects;
         $this->view->class = $class;
 
+        //Bouton "femer le projet"
+        $this->jquery->click("#btnFermerProjet",  $this->jquery->html("#response",""));
+        $this->jquery->click("#btnFermerProjet",  $this->jquery->html("#messages",""));
+
         // Envoit du JS à la vue
         $this->jquery->compile($this->view);
 

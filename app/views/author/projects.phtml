@@ -5,7 +5,7 @@
     var_dump($projects);
     $i = 0;
     foreach ($projects as $project) {
-        $j = $i+1;
+        $j = $i + 1;
         echo '<tr>
                 <td> ' . $project->nom . '</td>
                 <td width="500px">
@@ -17,9 +17,7 @@
                 </td>
                 <td>' . $project->reste . '</td>
 
-                <td> <button class="btnOuvrir btn btn-default" id="btnOuvrir'.$j.'"
-                class="btn btn-default">Ouvrir..
-                .</button> </td>
+                <td> <button class="btnOuvrir btn btn-default" id="btnOuvrir' . $j . '"class="btn btn-default">Ouvrir...</button> </td>
         </tr>';
         $i++;
     }
@@ -28,7 +26,7 @@
     </tbody>
 </table>
 
-<div id='response' ></div>
+<div id='response'></div>
 <div id="equipe"></div>
 <?php
 echo $script_foot;
