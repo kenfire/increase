@@ -10,4 +10,6 @@
 <a class="btn btn-warning">Warning</a>&nbsp;
 <a class="btn btn-danger">Danger</a>
 <br/>
-<?php echo $this->tag->linkTo(array('user/projects/1', 'User1')); ?>
+<br/>
+Link to user 1 projects: <?php echo $this->tag->linkTo(array('user/projects/1', 'User1')); ?><br/>
+Link to author 1 projects: <?php echo $this->tag->linkTo(array('author/projects/1', 'Author1')); ?>

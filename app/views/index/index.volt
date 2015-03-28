@@ -10,4 +10,6 @@
 <a class="btn btn-warning">Warning</a>&nbsp;
 <a class="btn btn-danger">Danger</a>
 <br/>
-{{ link_to("user/projects/1", "User1") }}
+<br/>
+Link to user 1 projects: {{ link_to("user/projects/1", "User1") }}<br/>
+Link to author 1 projects: {{ link_to("author/projects/1", "Author1") }}
