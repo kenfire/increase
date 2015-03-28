@@ -15,23 +15,23 @@ class AuthorController extends ControllerBase
         $author = User::findFirstByid($id);
         $this->view->author = $author; // variable accessible dans la vue
 
+
+        // Select * from usecase group by idProjet, idDev
+        $usecases = Usecase::find(array(
+            "group" => "idProjet, idDev"
+        ));
+        $k = 0;
+
+        $projects = array();
         // liste de tout les id des projets aux quels à participer le développeur
-        $phql = "SELECT DISTINCT idProjet  FROM usecase where idDev = $id ORDER BY idPorjet";
-
-        $idProjets = $this->modelsManager->executeQuery($phql);
-        // liste de tout les projets
-
-        var_dump($idProjets);
-        echo ("bug");
-
-        $k=0;
-        foreach ($idProjets as $id) {
-            $project = Projet::findFirst(array(
-                "id = $id"
-            ));
-            $projects[$k] = $project;
-            $k++;
+        foreach ($usecases as $usecase) {
+            if($usecase->idDev = $id) {
+                $project = Projet::findFirst($usecase->idProjet);
+                $projects[$k] = $project;
+                $k++;
+            }
         }
+
         $this->view->projects = $projects;
         $i = 0;
         foreach ($projects as $project) {
@@ -89,7 +89,7 @@ class AuthorController extends ControllerBase
         $this->view->dateLancement = $projet->getDateLancement();
         $this->view->dateFinPrevue = $projet->getDateFinPrevue();
 
-        $this->jquery->get("project/author/".$idProjet."/".$idAuthor, "#detailProject");
+        $this->jquery->get("project/author/" . $idProjet . "/" . $idAuthor, "#detailProject");
         $this->jquery->compile($this->view);
 
     }
