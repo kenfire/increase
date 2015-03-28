@@ -16,7 +16,7 @@ class AuthorController extends ControllerBase
         $this->view->author = $author; // variable accessible dans la vue
 
         // liste de tout les id des projets aux quels à participer le développeur
-        $phql = "SELECT DISTINCT (idPorjet)  FROM user where idDev = $id ORDER BY idPorjet";
+        $phql = "SELECT DISTINCT (idProjet)  FROM user where idDev = $id ORDER BY idPorjet";
 
         $idProjets = $this->modelsManager->executeQuery($phql);
         // liste de tout les projets

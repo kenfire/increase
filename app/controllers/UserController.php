@@ -266,6 +266,7 @@ class UserController extends ControllerBase
         // Envoit du JS à la vue
         $this->jquery->compile($this->view);
 
+
     }
 
     public function projectAction($id)

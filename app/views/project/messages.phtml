@@ -4,7 +4,8 @@
         <table class="table table-striped">
                 <?php
                     foreach($message as $messages){
-                        echo "<tr><td><b>".$messages->getUser()->getIdentite()."</b> - [".$messages->getObjet()."]</td><td>".$messages->getDate()."</td></tr>";
+                        echo "<tr id='trMessage'><td><b>".$messages->getUser()->getIdentite()."</b> - [".$messages->getObjet()."]</td><td>".$messages->getDate()."</td></tr>";
+                        echo "<tr><td>".$messages->getContent()."</td><td></td></tr>";
                     }
                 ?>
         </table>
