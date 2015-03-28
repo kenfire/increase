@@ -65,18 +65,14 @@ class AuthorController extends ControllerBase
 
     public function projectAction($idProjet, $idAuthor)
     {
-        $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
+        //$this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
 
         $projet = Projet::findFirst($idProjet);
 
         if ($projet != false) {
             if ($idAuthor != 0) {
                 $usecases = $projet->getUsecases();
-            } else{
-                $projet = "noUser";
             }
-        } else{
-            $projet = "noProjet";
         }
 
         $this->view->projet = $projet;

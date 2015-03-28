@@ -53,8 +53,23 @@ class ProjectController extends ControllerBase
 
     }
 
-    public function authorAction($idProject, $idAuthor)
+    public function authorAction($idProjet, $idAuthor)
     {
+        $this->view->disableLevel(View::LEVEL_MAIN_LAYOUT);
 
+        $projet = Projet::findFirst(array("id"=>$idProjet));
+        if ($projet != false) {
+            if ($idAuthor != 0) {
+                $usecases = $projet->getUsecases();
+            }
+        }
+
+        $class = "progress-bar progress-bar-success progress-bar-striped";
+        $this->view->class = $class;
+        $this->view->setVars(array(
+            "projet"=> $projet,
+            "usecases"=> $usecases,
+            "author"=> $idAuthor,
+        ));
     }
 }

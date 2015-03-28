@@ -48,6 +48,11 @@ class Usecase extends \Phalcon\Mvc\Model
         return $this->code;
     }
 
+    public function getNom(){
+        return $this->nom;
+    }
+
+
     public function getPoids(){
         return $this->poids;
     }

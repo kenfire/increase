@@ -1,0 +1,11 @@
+<?php
+    foreach($usecases as $usecase){
+        if($usecase->getIdDev() == $author){
+            echo $usecase->getCode()." : ".$usecase->getNom(). " : ". $usecase->getPoids()." ";
+            echo '<div class="progress" style="background-color: #ffffff">';
+            echo '<div class="'.$class.'" role="progressbar" aria-valuenow="'.$usecase->getAvancement().'" aria-valuemin="0" aria-valuemax="100" style="width: '.$usecase->getAvancement().'">';
+            echo $usecase->getAvancement();
+            echo '</div></div><br>';
+        }
+    }
+?>
